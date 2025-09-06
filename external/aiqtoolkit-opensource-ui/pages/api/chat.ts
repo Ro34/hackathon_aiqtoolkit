@@ -21,6 +21,9 @@ const handler = async (req: Request): Promise<Response> => {
     }
   } = (await req.json()) as ChatBody;
 
+  const enableIntermediateSteps =
+  additionalProps?.enableIntermediateSteps ?? true;
+
   try {    
     let payload
     // for generate end point the request schema is {input_message: "user question"}

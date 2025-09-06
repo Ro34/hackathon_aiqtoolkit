@@ -114,8 +114,11 @@ setup_project() {
 # 设置前端
 setup_frontend() {
     echo "🎨 设置前端..."
+
     
-    cd external/aiqtoolkit-opensource-ui
+    cd ..
+    
+    cd  external/aiqtoolkit-opensource-ui
     
     echo "正在安装前端依赖..."
     npm install
@@ -150,9 +153,10 @@ llms:
   # 默认使用Bailian API (用户可修改)
   default_llm:
     _type: openai
-    model_name: "qwen-plus"
-    api_key: "Your API Key"
-    base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+    model_name: "Qwen/Qwen3-30B-A3B-Thinking-2507"
+    api_key: "sk-appephokhpvzsburhdgyhdnvuuqlzehzavglvdmwqudhevrd"
+    # base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+    base_url: "https://api.siliconflow.cn/v1"
     temperature: 0.7
     max_tokens: 2048
 
@@ -182,7 +186,7 @@ echo "🚀 启动 NVIDIA NeMo Agent Toolkit AI对话机器人"
 echo "=============================================="
 
 # 设置环境变量
-export TAVILY_API_KEY=Your API Key
+export TAVILY_API_KEY=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
 
 # 激活Python虚拟环境
 source .venv/bin/activate

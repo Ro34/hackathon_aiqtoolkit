@@ -36,3 +36,4 @@ from .mcp import mcp_tool
 from .memory_tools import add_memory_tool
 from .memory_tools import delete_memory_tool
 from .memory_tools import get_memory_tool
+from ..tool import greeting_tool_register
