@@ -21,6 +21,8 @@ from . import chat_completion
 from . import datetime_tools
 from . import document_search
 from . import github_tools
+from . import network_product_search
+from . import network_product_recommendation_agent
 from . import nvidia_rag
 from . import retriever
 from . import server_tools

@@ -17,6 +17,21 @@ functions:
     _type: greeting_tool
     description: "当用户问候'你好'时，返回带时间的问候。"
 
+  network_product_search: # 网络产品推荐工具
+    _type: network_product_search
+    description: "搜索和推荐网络产品，包括路由器、交换机、防火墙等设备"
+    max_results: 5
+    include_specifications: true
+
+  network_product_recommendation_agent: # 高级网络产品推荐智能体
+    _type: network_product_recommendation_agent
+    description: "高级网络产品推荐智能体，结合产品数据库和实时搜索"
+    max_results: 3
+    include_real_time_search: true
+    include_specifications: true
+    include_pricing: true
+    tavily_api_key: "" # 留空，从环境变量读取
+
 llms:
   # 默认使用Bailian API (用户可修改)
   default_llm:
@@ -34,6 +49,8 @@ workflow:
     - tavily_search
     - current_datetime
     - greeting_tool # 在工作流中启用新工具
+    - network_product_search # 启用网络产品推荐工具
+    - network_product_recommendation_agent # 启用高级推荐智能体
 
   llm_name: default_llm
   verbose: true
