@@ -175,9 +175,10 @@ llms:
   # 默认使用Bailian API (用户可修改)
   default_llm:
     _type: openai
-    model_name: "qwen-plus"
-    api_key: "Your API Key"
-    base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+    model_name: "Qwen/Qwen3-30B-A3B-Thinking-2507"
+    api_key: "sk-your-api-key"
+    # base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+    base_url: "https://api.siliconflow.cn/v1"
     temperature: 0.7
     max_tokens: 2048
 
@@ -220,7 +221,7 @@ NEMO_DIR=$(pwd)
 PROJECT_ROOT=$(dirname "$NEMO_DIR")
 
 # 设置环境变量
-export TAVILY_API_KEY=Your API Key
+export TAVILY_API_KEY=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
 
 # 激活Python虚拟环境
 source .venv/bin/activate

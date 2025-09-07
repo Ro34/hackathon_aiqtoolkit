@@ -11,28 +11,60 @@ functions:
   internet_search:
     _type: tavily_internet_search
     description: "使用Tavily API进行实时网络搜索"
-  
+
   current_datetime:
     _type: current_datetime
     description: "获取当前日期和时间"
+
+  # 常规聊天（沿用之前的 ReAct 配置）
+  chat:
+    _type: react_agent
+    tool_names:
+      - internet_search
+      - current_datetime
+    llm_name: default_llm
+    verbose: true
+    parse_agent_response_max_retries: 3
+    max_tool_calls: 10
+
+  # 多 Agent 辩论工作流
+  debate:
+    _type: debate_agent
+    tool_names:
+      - internet_search
+      - current_datetime
+    llm_name: default_llm
+    rounds: 3
+    verbose: true
+
+# llms:
+#   # 默认使用Bailian API (用户可修改)
+#   default_llm:
+#     _type: openai
+#     model_name: "qwen-plus"
+#     api_key: "Your API Key"
+#     base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+#     temperature: 0.7
+#     max_tokens: 2048
 
 llms:
   # 默认使用Bailian API (用户可修改)
   default_llm:
     _type: openai
-    model_name: "qwen-plus"
-    api_key: "Your API Key"
-    base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+    model_name: "Qwen/Qwen3-30B-A3B-Thinking-2507"
+    api_key: "sk-your-api-key"
+    base_url: "https://api.siliconflow.cn/v1"
     temperature: 0.7
     max_tokens: 2048
 
 workflow:
-  _type: react_agent
-  tool_names:
-    - internet_search
-    - current_datetime
-  llm_name: default_llm
-  verbose: true
-  parse_agent_response_max_retries: 3
-  max_iterations: 10
+  _type: debate_router
+  debate_fn: debate
+  default_fn: chat
+  trigger_keywords:
+    - "辩论"
+    - "正反"
+    - "利弊"
+    - "pros and cons"
+    - "debate"
 
